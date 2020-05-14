@@ -14,7 +14,7 @@ class LoginController: UIViewController {
     
     private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
     
-    private let emailTestField = CustomTextField(placeholder: "Email")
+    private let emailTextField = CustomTextField(placeholder: "Email")
     
     private let passwordTextField: CustomTextField = {
         let tf = CustomTextField(placeholder: "Password")
@@ -24,6 +24,7 @@ class LoginController: UIViewController {
     
     private let loginButton: AuthButton = {
         let button = AuthButton(type: .system)
+        button.title = "Log In"
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         return button
@@ -63,7 +64,7 @@ class LoginController: UIViewController {
         attributedTitle.append(NSAttributedString(string: "Sign Up",
                                                   attributes: boldAtts))
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSignUpController), for: .touchUpInside)
         return button
     }()
     
@@ -82,35 +83,33 @@ class LoginController: UIViewController {
     }
     
     @objc func handleForgotPassword() {
-        print("DEBUG: Handle show forgot password..")
+        let controller = ResetPasswordController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func handleGoogleLogin() {
         print("DEBUG: Handle Google log in")
     }
     
-    @objc func handleSignUp() {
-        print("DEBUG: Handle Sign Up")
+    @objc func showSignUpController() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
-    // MARK: - Helper
+    // MARK: - Helpers
     
     func configureUI() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+        configureGradientBackground()
         
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
         iconImage.setDimensions(height: 120, width: 120)
         iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         
-        let stack = UIStackView(arrangedSubviews: [emailTestField,
+        let stack = UIStackView(arrangedSubviews: [emailTextField,
                                                    passwordTextField,
                                                    loginButton])
         stack.axis = .vertical

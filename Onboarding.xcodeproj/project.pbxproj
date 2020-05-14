@@ -18,6 +18,8 @@
 		4BCEAD5E246C90310082870C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD5D246C90310082870C /* CustomTextField.swift */; };
 		4BCEAD60246C92A50082870C /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD5F246C92A50082870C /* AuthButton.swift */; };
 		4BCEAD62246D37E00082870C /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD61246D37E00082870C /* DividerView.swift */; };
+		4BCEAD64246D42370082870C /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD63246D42370082870C /* RegistrationController.swift */; };
+		4BCEAD66246D48670082870C /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD65246D48670082870C /* ResetPasswordController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4BCEAD5D246C90310082870C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4BCEAD5F246C92A50082870C /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		4BCEAD61246D37E00082870C /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		4BCEAD63246D42370082870C /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		4BCEAD65246D48670082870C /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				4BCEAD59246C75B70082870C /* LoginController.swift */,
+				4BCEAD63246D42370082870C /* RegistrationController.swift */,
+				4BCEAD65246D48670082870C /* ResetPasswordController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,12 +208,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BCEAD5C246C799C0082870C /* Extensions.swift in Sources */,
+				4BCEAD64246D42370082870C /* RegistrationController.swift in Sources */,
 				4BCEAD60246C92A50082870C /* AuthButton.swift in Sources */,
 				4BCEAD44246C73D30082870C /* ViewController.swift in Sources */,
 				4BCEAD5E246C90310082870C /* CustomTextField.swift in Sources */,
 				4BCEAD5A246C75B70082870C /* LoginController.swift in Sources */,
 				4BCEAD40246C73D30082870C /* AppDelegate.swift in Sources */,
 				4BCEAD62246D37E00082870C /* DividerView.swift in Sources */,
+				4BCEAD66246D48670082870C /* ResetPasswordController.swift in Sources */,
 				4BCEAD42246C73D30082870C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
