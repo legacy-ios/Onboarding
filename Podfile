@@ -9,7 +9,7 @@ target 'Onboarding' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
-	pod 'JGProgressHUD', '~>2.0.3'
+	pod 'JGProgressHUD', '~> 2.0.3'
 	pod 'GoogleSignIn'
 	pod 'Firebase/Database'
 	pod 'paper-onboarding'
