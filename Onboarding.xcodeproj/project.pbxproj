@@ -20,6 +20,7 @@
 		4BCEAD62246D37E00082870C /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD61246D37E00082870C /* DividerView.swift */; };
 		4BCEAD64246D42370082870C /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD63246D42370082870C /* RegistrationController.swift */; };
 		4BCEAD66246D48670082870C /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD65246D48670082870C /* ResetPasswordController.swift */; };
+		4BCEAD68246D50C60082870C /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD67246D50C60082870C /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4BCEAD61246D37E00082870C /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		4BCEAD63246D42370082870C /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		4BCEAD65246D48670082870C /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
+		4BCEAD67246D50C60082870C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		4BCEAD55246C744D0082870C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4BCEAD67246D50C60082870C /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				4BCEAD64246D42370082870C /* RegistrationController.swift in Sources */,
 				4BCEAD60246C92A50082870C /* AuthButton.swift in Sources */,
 				4BCEAD44246C73D30082870C /* ViewController.swift in Sources */,
+				4BCEAD68246D50C60082870C /* AuthenticationViewModel.swift in Sources */,
 				4BCEAD5E246C90310082870C /* CustomTextField.swift in Sources */,
 				4BCEAD5A246C75B70082870C /* LoginController.swift in Sources */,
 				4BCEAD40246C73D30082870C /* AppDelegate.swift in Sources */,
