@@ -25,6 +25,9 @@
 		4BCEAD6A246D69D90082870C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BCEAD69246D69D90082870C /* GoogleService-Info.plist */; };
 		4BCEAD6C246DA02F0082870C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD6B246DA02F0082870C /* HomeController.swift */; };
 		4BCEAD6E246DBBC60082870C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD6D246DBBC60082870C /* Service.swift */; };
+		4BCEAD70246E827D0082870C /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD6F246E827D0082870C /* OnboardingController.swift */; };
+		4BCEAD72246E890C0082870C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD71246E890C0082870C /* Constants.swift */; };
+		4BCEAD74246E93A60082870C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD73246E93A60082870C /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		4BCEAD69246D69D90082870C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BCEAD6B246DA02F0082870C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4BCEAD6D246DBBC60082870C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		4BCEAD6F246E827D0082870C /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		4BCEAD71246E890C0082870C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4BCEAD73246E93A60082870C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		6FC8188F04D50AF8E19F51C7 /* Pods-Onboarding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onboarding.release.xcconfig"; path = "Target Support Files/Pods-Onboarding/Pods-Onboarding.release.xcconfig"; sourceTree = "<group>"; };
 		A395DDE8E7E655C81DC81A23 /* Pods-Onboarding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onboarding.debug.xcconfig"; path = "Target Support Files/Pods-Onboarding/Pods-Onboarding.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +124,7 @@
 				4BCEAD63246D42370082870C /* RegistrationController.swift */,
 				4BCEAD65246D48670082870C /* ResetPasswordController.swift */,
 				4BCEAD6B246DA02F0082870C /* HomeController.swift */,
+				4BCEAD6F246E827D0082870C /* OnboardingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				4BCEAD67246D50C60082870C /* AuthenticationViewModel.swift */,
+				4BCEAD73246E93A60082870C /* OnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				4BCEAD5B246C799C0082870C /* Extensions.swift */,
+				4BCEAD71246E890C0082870C /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,13 +318,16 @@
 				4BCEAD5C246C799C0082870C /* Extensions.swift in Sources */,
 				4BCEAD6E246DBBC60082870C /* Service.swift in Sources */,
 				4BCEAD64246D42370082870C /* RegistrationController.swift in Sources */,
+				4BCEAD74246E93A60082870C /* OnboardingViewModel.swift in Sources */,
 				4BCEAD60246C92A50082870C /* AuthButton.swift in Sources */,
 				4BCEAD44246C73D30082870C /* ViewController.swift in Sources */,
+				4BCEAD72246E890C0082870C /* Constants.swift in Sources */,
 				4BCEAD68246D50C60082870C /* AuthenticationViewModel.swift in Sources */,
 				4BCEAD5E246C90310082870C /* CustomTextField.swift in Sources */,
 				4BCEAD5A246C75B70082870C /* LoginController.swift in Sources */,
 				4BCEAD40246C73D30082870C /* AppDelegate.swift in Sources */,
 				4BCEAD6C246DA02F0082870C /* HomeController.swift in Sources */,
+				4BCEAD70246E827D0082870C /* OnboardingController.swift in Sources */,
 				4BCEAD62246D37E00082870C /* DividerView.swift in Sources */,
 				4BCEAD66246D48670082870C /* ResetPasswordController.swift in Sources */,
 				4BCEAD42246C73D30082870C /* SceneDelegate.swift in Sources */,

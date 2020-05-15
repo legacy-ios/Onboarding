@@ -13,6 +13,8 @@ class HomeController: UIViewController {
     
     //MARK: - Properties
     
+    private var shouldShowOnboarding = true
+    
     //MARK: - Selectors
     
     @objc func handleLogout() {
@@ -46,13 +48,22 @@ class HomeController: UIViewController {
         self.present(nav, animated: true, completion: nil)
     }
     
+    fileprivate func presentOnboardingController() {
+        let controller = OnboardingController()
+        controller.delegate = self
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
+    }
+    
     func authenticateUser() {
         if Auth.auth().currentUser?.uid == nil {
             DispatchQueue.main.async {
                 self.presentLoginController()
             }
         } else {
-            print("DEBUG: User IS Logged in..")
+            if shouldShowOnboarding {
+                presentOnboardingController()
+            }
         }
     }
     
@@ -76,5 +87,13 @@ class HomeController: UIViewController {
         let image = UIImage(systemName: "arrow.left")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+}
+
+extension HomeController: OnboardingControllerDelegate {
+    func controllerWantsToDismiss(_ controller: OnboardingController) {
+        controller.dismiss(animated: true, completion: nil)
+        shouldShowOnboarding.toggle()
+        print("DEBUG: show onboarding is \(shouldShowOnboarding)")
     }
 }
