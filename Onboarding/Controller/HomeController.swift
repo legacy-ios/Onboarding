@@ -82,7 +82,7 @@ class HomeController: UIViewController {
     
     fileprivate func showWelcomeLabel() {
         guard let user = user else { return }
-        guard user.hasSeenOnboarding else { return } // when hasSeenOnboarding is true
+        guard !user.hasSeenOnboarding else { return }
         welcomeLabel.text = "Welcome!! \(user.fullname)"
         UIView.animate(withDuration: 1) {
             self.welcomeLabel.alpha = 1
@@ -99,7 +99,7 @@ class HomeController: UIViewController {
     
     fileprivate func presentOnboardingIfNeccessary() {
         guard let user = user else { return }
-        if user.hasSeenOnboarding { return }
+        guard !user.hasSeenOnboarding else { return }
         let controller = OnboardingController()
         controller.delegate = self
         controller.modalPresentationStyle = .fullScreen
