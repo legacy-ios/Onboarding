@@ -45,11 +45,17 @@ class ResetPasswordController: UIViewController {
     // MARK: - selectors
     
     @objc func handleReset() {
+        
         guard let email = viewModel.email else { return }
         
+        showLoader(true)
+
         Service.resetPassword(forEmail: email) { error in
+            
+            self.showLoader(false)
+
             if let error = error {
-                print("DEBUG: Failed to reset password: \(error.localizedDescription)")
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
                 return
             }
             

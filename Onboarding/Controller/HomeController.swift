@@ -51,6 +51,12 @@ class HomeController: UIViewController {
         }
     }
     
+    func fetchUserWithFirestore() {
+        Service.fetchUserWithFirestore { user in
+            self.user = user
+        }
+    }
+    
     func logout() {
         do{
             try Auth.auth().signOut()
@@ -66,7 +72,8 @@ class HomeController: UIViewController {
                 self.presentLoginController()
             }
         } else {
-            fetchUser()
+            //fetchUser()
+            fetchUserWithFirestore()
         }
     }
     
@@ -82,8 +89,8 @@ class HomeController: UIViewController {
     
     fileprivate func showWelcomeLabel() {
         guard let user = user else { return }
-        guard !user.hasSeenOnboarding else { return }
-        welcomeLabel.text = "Welcome!! \(user.fullname)"
+        guard user.hasSeenOnboarding else { return }
+        welcomeLabel.text = "Welcome \(user.fullname)"
         UIView.animate(withDuration: 1) {
             self.welcomeLabel.alpha = 1
         }
@@ -126,8 +133,13 @@ class HomeController: UIViewController {
 extension HomeController: OnboardingControllerDelegate {
     func controllerWantsToDismiss(_ controller: OnboardingController) {
         controller.dismiss(animated: true, completion: nil)
-        
+        /*
         Service.updateUserHasSeenOnboarding { (error, ref) in
+            self.user?.hasSeenOnboarding = true // 메뉴얼리 업데이트
+            print("DEBUG: Didset has seen onboarding")
+        }*/
+        
+        Service.updateUserHasSeenOnboardingFirestore { error in
             self.user?.hasSeenOnboarding = true // 메뉴얼리 업데이트
             print("DEBUG: Didset has seen onboarding")
         }
@@ -137,6 +149,7 @@ extension HomeController: OnboardingControllerDelegate {
 extension HomeController: AuthenticationDelegate {
     func authenticationComplete() {
         dismiss(animated: true, completion: nil)
-        fetchUser()
+        //fetchUser()
+        fetchUserWithFirestore()
     }
 }

@@ -92,9 +92,14 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
     
+        showLoader(true)
+        
         Service.logUserIn(withEmail: email, password: password, completion: {(result, error) in
+            
+            self.showLoader(false)
+
             if let error = error {
-                print("DEBUG: Error signing in with error:\(error.localizedDescription)")
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
                 return
             }
             
@@ -112,6 +117,7 @@ class LoginController: UIViewController {
     }
     
     @objc func handleGoogleLogin() {
+        showLoader(true)
         GIDSignIn.sharedInstance()?.signIn()
     }
     
@@ -197,7 +203,19 @@ extension LoginController: FormViewModel {
 
 extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        self.showLoader(false)
+
+        if let error = error {
+            print("DEBUG: didSignInFor: \(error.localizedDescription)")
+            return
+        }
+        
         Service.signInWithGoogle(didSignFor: user) { (error, refefence) in
+            if let error = error {
+                print("DEBUG: didSignInFor: \(error.localizedDescription)")
+                return
+            }
             print("DEBUG: Successfully signed in with google...")
             self.delegate?.authenticationComplete()
         }
@@ -209,6 +227,6 @@ extension LoginController: GIDSignInDelegate {
 extension LoginController: ResetPasswordControllerDelegate {
     func didSendResetPassword() {
         navigationController?.popViewController(animated: true)
-        print("DEBUG: Show success message here...")
+        self.showMessage(withTitle: "Success", message: MSG_RESET_PASSWORD_LINK_SENT)
     }
 }

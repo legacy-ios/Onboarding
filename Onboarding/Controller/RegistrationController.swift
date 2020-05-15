@@ -55,13 +55,31 @@ class RegistrationController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let fullname = fullNameTextField.text else { return }
-                
+
+        showLoader(true)
+        
+        /*
         Service.registerUserWtihFirebase(withEmail: email, password: password, fullname: fullname) { (error, reference) in
+            
+            self.showLoader(false)
+            
             if let error = error {
-                print("DEBUG: Faild to upload user data with error \(error.localizedDescription)")
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
                 return
             }
 
+            self.delegate?.authenticationComplete()
+        }*/
+        
+        Service.registerUserWtihFirestore(withEmail: email, password: password, fullname: fullname) { error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.showMessage(withTitle: "Error", message: error.localizedDescription)
+                return
+            }
+            
             self.delegate?.authenticationComplete()
         }
         
