@@ -9,9 +9,14 @@
 import UIKit
 import GoogleSignIn
 
+protocol AuthenticationDelegate: class {
+    func authenticationComplete()
+}
 class LoginController: UIViewController {
 
     // MARK : - Properties
+    
+    weak var delegate: AuthenticationDelegate?
     
     private var viewModel = LoginViewModel()
     
@@ -93,7 +98,7 @@ class LoginController: UIViewController {
                 return
             }
             
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         })
         
         
@@ -110,6 +115,7 @@ class LoginController: UIViewController {
     
     @objc func showSignUpController() {
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -187,7 +193,7 @@ extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         Service.signInWithGoogle(didSignFor: user) { (error, refefence) in
             print("DEBUG: Successfully signed in with google...")
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         }
     }
 }

@@ -12,6 +12,8 @@ class RegistrationController: UIViewController {
     
     // MARK : - Properties
     
+    weak var delegate: AuthenticationDelegate?
+    
     private var viewModel = RegistrationViewModel()
     
     private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
@@ -60,7 +62,7 @@ class RegistrationController: UIViewController {
                 return
             }
 
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         }
         
     }

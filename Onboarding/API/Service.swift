@@ -26,8 +26,8 @@ struct Service {
             }
             
             guard let uid = result?.user.uid else { return }
-            let values = ["email": email, "fullname": fullname]
-            Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: completion)
+            let values = ["email": email, "fullname": fullname, "hasSeenOnboarding": false] as [String : Any]
+            REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
             
         }
     }
@@ -43,12 +43,39 @@ struct Service {
             }
             
             guard let uid = result?.user.uid else { return }
-            guard let email = result?.user.email else { return }
-            guard let fullname = result?.user.displayName else { return }
             
-            let values = ["email": email, "fullname": fullname]
-            Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: completion)
+            
+            REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshot in
+                if !snapshot.exists() {// registe new user
+                    print("DEBUG: User does not exists create user...")
+                    guard let email = result?.user.email else { return }
+                    guard let fullname = result?.user.displayName else { return }
+                    let values = ["email": email, "fullname": fullname, "hasSeenOnboarding": false] as [String : Any]
+                    REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
+                } else {
+                    print("DEBUG: User already exists...")
+                    completion(error, REF_USERS.child(uid))
+                }
+            }
+            
             
         }
+    }
+    
+    static func fetchUser(completion: @escaping(User) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshsot in
+            let uid = snapshsot.key
+            guard let dictionary = snapshsot.value as? [String: Any] else { return }
+            
+            let user = User(uid: uid, dictionary: dictionary)
+            completion(user)
+        }
+    }
+    
+    static func updateUserHasSeenOnboarding(completion: @escaping(DatabaseCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        REF_USERS.child(uid).child("hasSeenOnboarding").setValue(true, withCompletionBlock: completion)
     }
 }
