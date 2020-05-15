@@ -47,7 +47,7 @@ class LoginController: UIViewController {
         attributedTitle.append(NSAttributedString(string: "Get help signing in.",
                                                   attributes: boldAtts))
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showForgotPassword), for: .touchUpInside)
         return button
     }()
     
@@ -104,8 +104,10 @@ class LoginController: UIViewController {
         
     }
     
-    @objc func handleForgotPassword() {
+    @objc func showForgotPassword() {
         let controller = ResetPasswordController()
+        controller.delegate = self
+        controller.email = emailTextField.text
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -181,6 +183,8 @@ class LoginController: UIViewController {
     }
 }
 
+//MARK: - FormViewModel
+
 extension LoginController: FormViewModel {
     func updateForm() {
         loginButton.isEnabled = viewModel.shouldEnableButton
@@ -189,11 +193,22 @@ extension LoginController: FormViewModel {
     }
 }
 
+//MARK: - GIDSignInDelegate
+
 extension LoginController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         Service.signInWithGoogle(didSignFor: user) { (error, refefence) in
             print("DEBUG: Successfully signed in with google...")
             self.delegate?.authenticationComplete()
         }
+    }
+}
+
+//MARK: - ResetPasswordControllerDelegate
+
+extension LoginController: ResetPasswordControllerDelegate {
+    func didSendResetPassword() {
+        navigationController?.popViewController(animated: true)
+        print("DEBUG: Show success message here...")
     }
 }

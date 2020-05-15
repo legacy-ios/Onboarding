@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol ResetPasswordControllerDelegate: class {
+    func didSendResetPassword()
+}
+
 class ResetPasswordController: UIViewController {
     
     // MARK: - Properties
+    
+    var email: String?
+    
+    weak var delegate: ResetPasswordControllerDelegate?
     
     private var viewModel = ResetPasswordViewModel()
     
@@ -20,7 +28,7 @@ class ResetPasswordController: UIViewController {
     
     private let resetPasswordButton: AuthButton = {
         let button = AuthButton(type: .system)
-        button.title = "Send Reset Link"
+        button.title = "Send Reset Password"
         button.addTarget(self, action: #selector(handleReset), for: .touchUpInside)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         return button
@@ -37,7 +45,17 @@ class ResetPasswordController: UIViewController {
     // MARK: - selectors
     
     @objc func handleReset() {
+        guard let email = viewModel.email else { return }
         
+        Service.resetPassword(forEmail: email) { error in
+            if let error = error {
+                print("DEBUG: Failed to reset password: \(error.localizedDescription)")
+                return
+            }
+            
+            self.delegate?.didSendResetPassword()
+            
+        }
     }
     
     @objc func handleDissmissal() {
@@ -54,6 +72,7 @@ class ResetPasswordController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureNotificationObservers()
+        loadEmail()
     }
     
     // MARK: - Helpers
@@ -81,6 +100,13 @@ class ResetPasswordController: UIViewController {
         stack.anchor(top: iconImage.bottomAnchor, left: view.leftAnchor,
                      right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         
+    }
+    
+    func loadEmail() {
+        guard let email = email else { return }
+        viewModel.email = email
+        emailTextField.text = email
+        updateForm()
     }
     
     func configureNotificationObservers() {
