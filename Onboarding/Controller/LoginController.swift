@@ -94,7 +94,7 @@ class LoginController: UIViewController {
     
         showLoader(true)
         
-        Service.logUserIn(withEmail: email, password: password, completion: {(result, error) in
+        Service.logUserIn(withEmail: email, password: password, completion: { result, error in
             
             self.showLoader(false)
 
@@ -105,7 +105,6 @@ class LoginController: UIViewController {
             
             self.delegate?.authenticationComplete()
         })
-        
         
     }
     
@@ -211,7 +210,7 @@ extension LoginController: GIDSignInDelegate {
             return
         }
         
-        Service.signInWithGoogle(didSignFor: user) { (error, refefence) in
+        Service.signInWithGoogle(didSignFor: user) { error in
             if let error = error {
                 print("DEBUG: didSignInFor: \(error.localizedDescription)")
                 return

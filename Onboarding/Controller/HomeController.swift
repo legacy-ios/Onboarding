@@ -60,7 +60,8 @@ class HomeController: UIViewController {
     func logout() {
         do{
             try Auth.auth().signOut()
-            self.presentLoginController()
+            presentLoginController()
+            welcomeLabel.text = ""
         } catch {
             print("DEBUG: Error signing out")
         }
