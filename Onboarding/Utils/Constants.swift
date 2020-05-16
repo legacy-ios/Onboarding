@@ -20,4 +20,4 @@ let MSG_RESET_PASSWORD_LINK_SENT = "We sent a link to your email to reset your p
 
 let DB_REF = Database.database().reference()
 let REF_USERS = DB_REF.child("users")
-
+let FIRE_STORE_COLLECTION = Firestore.firestore().collection("users")

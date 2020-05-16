@@ -74,13 +74,13 @@ struct Service {
                           "hasSeenOnboarding": false,
                           "uid": uid] as [String : Any]
             
-            Firestore.firestore().collection("users").document(uid).setData(values, completion: completion)
+            FIRE_STORE_COLLECTION.document(uid).setData(values, completion: completion)
         }
     }
     
     static func fetchUserWithFirestore(completion: @escaping(User) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument{(snapshot, error) in
+        FIRE_STORE_COLLECTION.document(uid).getDocument{(snapshot, error) in
             print("DEBUG: Snapshot is \(String(describing: snapshot?.data()))")
             guard let dictionary = snapshot?.data() else { return }
             let user = User(dictionary: dictionary)
@@ -94,7 +94,7 @@ struct Service {
         
         let data = ["hasSeenOnboarding": true]
         
-        Firestore.firestore().collection("users").document(uid).updateData(data, completion: completion)
+        FIRE_STORE_COLLECTION.document(uid).updateData(data, completion: completion)
     }
     
     //MARK: - Google
@@ -117,14 +117,14 @@ struct Service {
 
                 if let document = document {
                    
-                    if document.exists {
+                    if !document.exists {
                         guard let email = result?.user.email else { return }
                         guard let fullname = result?.user.displayName else { return }
                         let values = ["email": email,
                                       "fullname": fullname,
                                       "hasSeenOnboarding": false,
                                       "uid": uid] as [String : Any]
-                        Firestore.firestore().collection("users").document(uid).setData(values, completion: completion)
+                        FIRE_STORE_COLLECTION.document(uid).setData(values, completion: completion)
                     } else {
                         completion(error)
                     }
