@@ -85,6 +85,10 @@ class LoginController: UIViewController {
         configureGoogleSignIn()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Selectors
     
     @objc func handleLogin() {
