@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		240C0DF6827B4727ACFB27D9 /* Pods_Onboarding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221E72B43B78E72F5B26ECBD /* Pods_Onboarding.framework */; };
+		4B65E7A1250B83350040CAF4 /* onboardingPreView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4B65E7A0250B83350040CAF4 /* onboardingPreView.gif */; };
 		4BCEAD40246C73D30082870C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD3F246C73D30082870C /* AppDelegate.swift */; };
 		4BCEAD42246C73D30082870C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD41246C73D30082870C /* SceneDelegate.swift */; };
 		4BCEAD44246C73D30082870C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCEAD43246C73D30082870C /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		221E72B43B78E72F5B26ECBD /* Pods_Onboarding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onboarding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B65E7A0250B83350040CAF4 /* onboardingPreView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = onboardingPreView.gif; sourceTree = "<group>"; };
 		4BCEAD3C246C73D30082870C /* Onboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BCEAD3F246C73D30082870C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BCEAD41246C73D30082870C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B65E79F250B81CE0040CAF4 /* PreviewGIF */ = {
+			isa = PBXGroup;
+			children = (
+				4B65E7A0250B83350040CAF4 /* onboardingPreView.gif */,
+			);
+			path = PreviewGIF;
+			sourceTree = "<group>";
+		};
 		4BCEAD33246C73D30082870C = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		4BCEAD3E246C73D30082870C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				4B65E79F250B81CE0040CAF4 /* PreviewGIF */,
 				4BCEAD58246C74580082870C /* Utils */,
 				4BCEAD57246C74540082870C /* Model */,
 				4BCEAD56246C74500082870C /* View */,
@@ -248,6 +259,7 @@
 				4BCEAD4C246C73D50082870C /* LaunchScreen.storyboard in Resources */,
 				4BCEAD6A246D69D90082870C /* GoogleService-Info.plist in Resources */,
 				4BCEAD49246C73D50082870C /* Assets.xcassets in Resources */,
+				4B65E7A1250B83350040CAF4 /* onboardingPreView.gif in Resources */,
 				4BCEAD47246C73D30082870C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
